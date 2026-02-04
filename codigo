@@ -1,0 +1,28 @@
+//allow pasting
+
+(async () => {
+  // Seleciona o botão pai que tem o papel de alternar a seleção
+  const selectors = document.querySelectorAll('div[role="button"][aria-label="Alternar caixa de seleção"]');
+  
+  console.log(`Encontrados ${selectors.length} itens para selecionar.`);
+
+  for (let i = 0; i < selectors.length; i++) {
+    const btn = selectors[i];
+    
+    // Verifica se já não está selecionado (olhando a cor do ícone interno ou a URL da máscara)
+    // O ícone vazio tem a cor rgb(219, 219, 219)
+    const icon = btn.querySelector('div[data-bloks-name="ig.components.Icon"]');
+    const bg = icon ? getComputedStyle(icon).backgroundColor : '';
+    const isSelected = bg && bg.includes('74, 93, 249');
+
+    if (!isSelected) {
+      btn.click();
+      console.log(`Selecionando item ${i + 1}...`);
+      
+      // Delay de 500ms para não sobrecarregar e parecer humano
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+  }
+
+  console.log("Seleção concluída!");
+})();
