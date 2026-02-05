@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <style>
     body {
-      width: 300px;
+      width: 350px;
       padding: 20px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -23,6 +23,57 @@
       margin-bottom: 15px;
       font-size: 13px;
       line-height: 1.6;
+    }
+    .status-box {
+      background: rgba(255, 215, 0, 0.2);
+      border: 2px solid gold;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .status-box.pro {
+      background: rgba(0, 255, 0, 0.2);
+      border-color: #00ff00;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: #000;
+    }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .activation-form {
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 8px;
+      box-sizing: border-box;
+      font-size: 13px;
+      color: #333;
     }
     .steps {
       list-style: none;
@@ -47,30 +98,52 @@
       margin-top: 15px;
       opacity: 0.8;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>🤖 Instagram Auto Selector</h1>
+  <h1>🤖 Auto Seleção Instagram</h1>
+
+  <div class="status-box" id="statusBox">
+    <div style="font-size: 24px; margin-bottom: 8px;">⭐</div>
+    <strong>Status:</strong> <span id="statusText">Gratuito</span><br>
+    <strong>Limite:</strong> <span id="limitText">6 itens</span>
+  </div>
+
+  <div id="upgradeSection">
+    <button class="btn btn-primary" id="btnUpgrade">
+      🚀 Liberar 90 Seleções - R$ 5,00
+    </button>
+    
+    <div class="activation-form">
+      <input type="text" id="activationCode" placeholder="Já tem um código? Cole aqui" maxlength="20">
+      <button class="btn btn-secondary" id="btnActivate">Ativar Código</button>
+    </div>
+  </div>
+
+  <div id="proSection" class="hidden">
+    <div class="info" style="background: rgba(0,255,0,0.2); border: 1px solid #00ff00;">
+      <strong>✅ Versão PRO Ativada!</strong><br>
+      Você pode selecionar até 90 itens por vez.
+    </div>
+  </div>
 
   <div class="info">
     <strong>Como usar:</strong>
     <ol class="steps">
       <li>Vá para "Sua atividade" no Instagram</li>
       <li>Entre em "Curtidas" ou "Comentários"</li>
-      <li>Clique no botão flutuante "🤖 Selecionar 90"</li>
+      <li>Clique no botão flutuante "🤖 Selecionar"</li>
       <li>Aguarde a seleção automática!</li>
     </ol>
   </div>
 
-  <div class="info">
-    <strong>⚙️ Configurações:</strong><br />
-    • Limite: 90 itens por vez<br />
-    • Delay: 400ms entre cliques<br />
-    • Funciona em curtidas e comentários
+  <div class="footer">
+    Versão 2.0 | Feito com ❤️
   </div>
 
-  <div class="footer">
-    Versão 1.0 | Feito com ❤️
-  </div>
+  <script src="popup.js"></script>
 </body>
 </html>
